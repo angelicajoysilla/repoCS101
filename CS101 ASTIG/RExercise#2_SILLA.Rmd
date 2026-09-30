@@ -1,0 +1,95 @@
+---
+title: "RExercise#2_Silla.Rmd"
+author: "angelicajoysilla"
+date: "2026-09-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part - A Arithemtic Operations
+
+```{r}
+a <- 17
+b <-5
+
+a + b
+a - b
+a * b
+a / b 
+
+```
+## Part 2 
+```{r}
+
+a %% b
+a %/% b
+
+```
+## Part 3
+```{r}
+
+2^10
+```
+```{r}
+17 / 5
+17 %% 5
+17 %/% 5
+```
+Q1: the given operators are somewhat related to eachother, the first operator prints the qoutient with a decimal, the second operator prints only the remainder and the third operator prints the integer
+```{r}
+10 %% 3
+10 %/% 3
+```
+Q2: I predicted the result would be 1 because  %%  is the modulo operator in R, which calculates the remainder when the first number is divided by the second. It works by finding how many times 3 fits evenly into 10-exactly 3 times, which totals 9. Subtracting 9 from 10 leaves 1, so that is the remainder. The spaces around the operator do not affect its function, so both expressions give the same answer.
+
+```{r}
+x <- 42
+class(x)
+y <- 42L
+class(y)
+z <- "42"
+class(z)
+w <- TRUE
+class(w)
+v <- 3 + 2i 
+class(v) 
+```
+
+```{r}
+x <- 42
+mode(x)
+y <- 42L
+mode(y)
+z <- "42"
+mode(z)
+w <- TRUE
+mode(w)
+v <- 3 + 2i 
+mode(v) 
+```
+
+Q#3: So, while 42 and 42L look the same when printed, under the hood one is a floating-point number and the other is a true integer.
+Q#4: 
+
+```{r}
+num_string <- "123"
+num_value <- as.numeric(num_string)
+typeof(num_value)
+class(num_value)
+mode(num_value)
+```
+
+```{r}
+logical_zero <- as.logical(0)
+logical_one <- as.logical(1)
+logical_zero
+logical_one
+```
+
+```{r}
+bad_string <- "hello123"
+result <- as.number(bad.string)
+```
