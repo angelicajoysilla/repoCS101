@@ -1,0 +1,64 @@
+---
+title: "RExercise#3_SILLA.Rmd"
+author: "Angelica Joy Silla"
+date: "2026-10-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "RExercise#3_SILLA.Rmd"
+author: "Angelica Joy Silla"
+date: "2026-10-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Part Part A — Creating Vectors: c(), seq(), rep()
+```{r}
+scores <- c(88, 92, 79, 95, 84)
+scores
+subjects <- c("Math", "Science", "English", "History", "PE")
+subjects
+
+
+
+odds <- seq(1, 19, by = 2)
+odds
+even_spaced <- seq(0, 1, length.out = 5)
+even_spaced
+
+
+
+rep("A", 4)
+rep(c("A", "B"), each = 2)
+rep(c("A", "B"), each = 2)
+
+
+
+##Q1
+age <- c(15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8)
+
+#a. there are 34 data points 
+
+#b. 1 / age
+
+#c. new_age becomes a single vector of length 69: the original 34 pages, then a 0, then the 34 ages again (34+1+34). c() just combines everything into one flat vector.
+
+#d. the minimum is 8 and the maximum is 57
+
+
+##Q2
+# each = 2 repeats each item right away, one at a time "A" "A" "B" "B"
+# times = 2 repeats the whole list again from the start "A" "B" "A" "B"
+
+##Q3
+# the two arguments control different things which is that "by=2" sets the size by each step. Starting at 1 and adding 2 each time gives 1,3,5....,19 it stops at 19 because the next step would pass 20 and "length.out = 5" sets how many numbers you get, R figures out the step size itself and spaces them evenly from 1 to 20: 1,5.75,10.5,15.25,20
+
+
