@@ -1,0 +1,51 @@
+---
+title: "RExcercise#8_SILLA"
+author: "Angelica Joy Silla"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+# Q1
+scores <- c(Ana=78, Ben=92, Cid=85, Dex=92, Eli=67, Fay=88, Gio=74)
+sort(scores)                  
+sort(scores, decreasing=TRUE)  
+
+subjects <- c("Science","Math","English","Filipino","PE")
+incomplete <- c(85, NA, 90, 70, NA, 95)
+sort(subjects)                 
+sort(incomplete)                
+sort(incomplete, na.last=TRUE)  
+
+# Q4
+order(scores)                 
+scores[order(scores)]           
+
+# Q5
+students <- data.frame(
+  name=c("Ana","Ben","Cid","Dex","Eli","Fay","Gio"),
+  score=c(78,92,85,92,67,88,74),
+  section=c("A","B","A","B","A","B","A"))
+students
+students[order(students$score), ]                    
+students[order(students$score, decreasing=TRUE), ]  
+
+# Q8
+cbind(scores, rank(scores))
+
+
+sales <- data.frame(
+  employee=c("Rey","Sam","Tin","Uma","Val"),
+  units_sold=c(120,145,145,98,130))
+sales$rank <- rank(-sales$units_sold)   
+sales[order(-sales$units_sold), ]       
+
+##Q3: sort() drops NAs silently. The "lowest score" you report would ignore students with missing data, so the result looks complete when it isn't. Check with sum(is.na(x)) first.
+##Q4: sort() returns the sorted values. order() returns the positions (indices) of the values in sorted order: 5 7 1 3 6 2 4. Indexing scores[order(scores)] gives the same values as sort(scores), because the positions put the elements in ascending order.
+##Q6: order(scores) returns "which element goes first, second, third…". On its own it's just position numbers, with no scores or names. It only becomes useful when you use it to index something.
+##Q7: sort() works on a single vector and can't move whole rows. Sorting one column would break its alignment with the other columns. order() gives one row ordering that you apply to every column at once, so related columns stay lined up.
+##Q8 (rank): Ben and Dex both got 6.5. They tie for the 6th and 7th positions, and R's default ties.method="average" gives each the average of the ranks they occupy, (6+7)/2 = 6.5. That keeps the rank total fair, since neither is placed ahead of the other.
+##Q9: No. order() gives display positions, not standings. It returns row positions (e.g., 2, 3, 5, 1, 4), not a rank for each person, and it can't express ties (Sam and Tin would just come out one after the other). rank() gives each item its standing, ties included, and order() is then used to arrange the table.
