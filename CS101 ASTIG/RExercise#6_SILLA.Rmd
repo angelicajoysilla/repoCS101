@@ -1,0 +1,81 @@
+---
+title: "RExcercise#6_SILLA"
+author: "Angelica Joy Silla"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+##Part A 
+name   <- c("Ana", "Ben", "Cid", "Dex", "Eli")
+age    <- c(20, 21, 19, 22, 20)
+passed <- c(TRUE, TRUE, FALSE, TRUE, FALSE)
+
+students <- data.frame(name = name, age = age, passed = passed)
+print(students)
+
+typeof(students$name) 
+class(students$name)    
+
+courses <- data.frame(
+  course_code = c("IS101", "IS102", "IS103"),
+  units       = c(3, 3, 2),
+  instructor  = c("Dr. P. Reyes", "Dr. R. Santos", "Dr. S. Cruz")
+)
+
+##Part C 
+str(students)
+dim(students)    
+nrow(students)   
+ncol(students)    
+names(students)  
+summary(students)
+
+##Part D
+students$year_level <- c(2, 3, 1, 4, 2)
+
+students$passed <- NULL
+
+students[order(students$age), ]                    
+students[order(students$age, decreasing = TRUE), ]  
+
+##Part E
+grades <- data.frame(
+  name    = c("Ana", "Ben", "Cid", "Dex", "Eli"),
+  midterm = c(85, 78, 92, 88, 70),
+  final   = c(90, 82, 95, 84, 75)
+)
+
+grades$average <- (grades$midterm + grades$final) / 2
+
+
+grades$remarks <- ifelse(grades$average >= 75, "Passed", "Failed")
+
+grades[grades$remarks == "Failed", c("name", "average")]
+
+##Q1 A data frame is a table, so every row needs one value in every column. Columns of different lengths would leave gaps, so R refuses to build it. You'd get an error like: arguments imply differing number of rows: 5, 4.
+
+##Q2 A data frame is a list whose elements are columns. Like any list, each element can have its own type (character, numeric, logical). Each column is an atomic vector, which can only hold one type, so a single column can't mix types. The "equal length" rule is what makes it a table.
+
+##Q3 class(students["age"]) is "data.frame", and class(students$age) is "numeric". Single brackets on a list return a smaller list (here, a one-column data frame). $ and [[ ]] extract the element itself, the plain vector.
+
+##Q4 & compares the two logical vectors position by position. A row is TRUE only if both conditions are TRUE for that row. That final vector selects the rows to keep. With |, a row is TRUE if either condition holds, so you'd get the same or more rows.
+
+
+##Q5 Numeric (age):* min, quartiles, median, mean, max.
+## Logical (passed):* counts of FALSE and TRUE (plus the mode/class).
+## Character (name):* only length, class, and mode.
+
+
+##6 str() is better for checking structure: column types, dimensions, and sample values. Use it when you first load data or suspect a type problem. summary() is better for understanding the values themselves: ranges, averages, and counts. Use it when exploring the data.
+
+##7 No. The filter would fail or return nothing useful. students$passed is NULL after removal, so NULL == TRUE gives logical(0), and the subset returns zero rows. Because every operation changes the data frame, you need to track its current state (columns, types) so later code doesn't depend on something that no longer exists.
+
+##8 order(students$age) returns the row positions in the order that would sort age ascending, e.g. 3 1 5 2 4. Placed in the row slot of students[ , ], it tells R to take row 3, then row 1, then row 5, and so on. Each selected row is taken whole, so all columns move together. The empty column slot after the comma keeps every column.
+
+##9 I'd start by adding two columns: 1. drop = final - midterm, the change between exams 2. remarks, based on the average. Then I'd subset the "Failed" students and look at them two ways. First, sort by drop to see whether failures have big negative drops. Second, sort by midterm to see whether failures have consistently low midterms. Whichever pattern fits the failed group better is the stronger factor.
+
+##Conclusion A data frame is a list of equal-length vectors, where each column is a vector of one type. Different columns can hold different types, like a list. The equal lengths make it a rectangular table where each row is one record. This is why it's R's main structure for real-world tabular data like spreadsheets and survey results.
