@@ -94,6 +94,6 @@ rowMeans(all_students)
 ##Q11: I chose rbind() because the classes have different students(S1, S2 vs S3, S4,)but the same columns (Midterm, Final). New students mean new rows. Shared column names were the clue.
 ##Q12: Stack all 5 matrices with rbind(), since they share the same 2 columns, Then check dim(): columns should be 2, and rows should equal the total students from all 5 classes.
 
-##Conclusion: A matrix is a 2D table ([row, col]), while an array adds more dimensions by stacking layers ([row, col, layer]). Both hold one data type. In a student dataset, rbind() adds new students as rows, and cbind() adds a new score column like a Final exam.
+##Conclusion: A matrix is a 2D table ([row, col]), while an array adds more dimensions by stacking layers ([row, col, layer]). Both hold one data type. In a student dataset, rbind() adds new students as rows, and cbind() adds a new score column like a Final exam..   
 
 
