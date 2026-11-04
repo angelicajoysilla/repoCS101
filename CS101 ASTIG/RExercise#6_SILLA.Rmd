@@ -78,4 +78,4 @@ grades[grades$remarks == "Failed", c("name", "average")]
 
 ##9 I'd start by adding two columns: 1. drop = final - midterm, the change between exams 2. remarks, based on the average. Then I'd subset the "Failed" students and look at them two ways. First, sort by drop to see whether failures have big negative drops. Second, sort by midterm to see whether failures have consistently low midterms. Whichever pattern fits the failed group better is the stronger factor.
 
-##Conclusion A data frame is a list of equal-length vectors, where each column is a vector of one type. Different columns can hold different types, like a list. The equal lengths make it a rectangular table where each row is one record. This is why it's R's main structure for real-world tabular data like spreadsheets and survey results.
+##Conclusion A data frame is a list of equal-length vectors, where each column is a vector of one type. Different columns can hold different types, like a list. The equal lengths make it a rectangular table where each row is one record. This is why it's R's main structure for real-world tabular data like spreadsheets and survey results..
