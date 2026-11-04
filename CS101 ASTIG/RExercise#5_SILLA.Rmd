@@ -1,0 +1,99 @@
+---
+title: "RExcercise#5_SILLA"
+author: "Angelica Joy Silla"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Part A
+```{r}
+m1 <- matrix(1:9, nrow = 3, ncol = 3)
+m1
+
+m2 <- matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE)
+m2
+
+scores <- matrix(c(88, 92, 79, 95, 84, 90), nrow = 2, ncol = 3, byrow = TRUE)
+rownames(scores) <- c("Quiz1", "Quiz2")
+colnames(scores) <- c("Ana", "Ben", "Cid")
+scores
+
+## Q1 By default, R fills a matrix column by column m1. With byrow = TRUE, it fills row by row m2. Same numbers, different order
+
+## Q2 R still makes the matrix but gives a warning. It recycles the first value (1) to fill the 9th slot, and warns because 8 is not a multiple of 8 rows.
+
+##PART B
+scores[1, 2]
+scores[1, ]
+scores[, "Ben"]
+scores
+
+scores[scores >= 90]
+
+class(scores[1, ])
+class(scores[, "Ben"])
+
+##Q4: A logical condition picks out individual values wherever they are in the matrix so the result can't keep the rows and columns. R returns just those values as a plain vector, with no row or column names.
+
+##PART C
+dim(scores)
+nrow(scores)
+ncol(scores)
+
+scores_t <- t(scores)
+scores_t 
+dim(scores_t)
+dim(scores)
+
+a <- matrix(1:4, nrow = 2)
+b <- matrix(5:8, nrow = 2)
+
+a + b
+a * b
+
+a %% b
+
+##Q5: a * b multiplies matching positions which is 1x5 and 3x7. a%%b is true matrix multiplication rows of a times columns of b then summed
+##6: dim(scores) is 23 and dim(scores_t) is 32. The names swap too because the rows before the columns, so the labels must follow their data
+
+##PART D 
+scores_v2 <- cbind(scores, Dex = c(85, 91))
+scores_v2
+
+scores_v3 <- rbind(scores, Quiz3 = c(80, 88, 93))
+scores_v3
+
+cbind(scores, c(85, 91, 100))
+
+##PART E
+arr <- array(1:12, dim = c(2, 3, 2))
+arr
+
+arr[1, 2, 2]
+arr[, , 1]
+dim(arr)
+
+##Q9: dim(arr) gives 2 3 2: 2 rows, 3 columns, and 2 stacked layers
+##Q10: daily temperature readings of 3 cities, taken at 4 times a day, over 2 days. Rows are times, columns are cities, and layers are days
+##11: One 2D matrix can only hold a single day, so a third dimension is needed to keep everyday together.
+
+##PART F
+class_a <- matrix(c(85, 90, 78, 92), nrow = 2, byrow = TRUE,
+                  dimnames = list(c("S1", "S2"), c("Midterm", "Final")))
+class_b <- matrix(c(88, 84, 95, 91), nrow = 2, byrow = TRUE,
+                  dimnames = list(c("S3", "S4"), c("Midterm", "Final")))
+
+all_students <- rbind(class_a, class_b)
+all_students
+rowMeans(all_students)
+
+##Q11: I chose rbind() because the classes have different students(S1, S2 vs S3, S4,)but the same columns (Midterm, Final). New students mean new rows. Shared column names were the clue.
+##Q12: Stack all 5 matrices with rbind(), since they share the same 2 columns, Then check dim(): columns should be 2, and rows should equal the total students from all 5 classes.
+
+##Conclusion: A matrix is a 2D table ([row, col]), while an array adds more dimensions by stacking layers ([row, col, layer]). Both hold one data type. In a student dataset, rbind() adds new students as rows, and cbind() adds a new score column like a Final exam.
+
+
